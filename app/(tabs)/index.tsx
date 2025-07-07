@@ -1,75 +1,85 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import React from 'react';
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { Link } from 'expo-router';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.title}>🍦 Peshwari Icecream Shop</Text>
+      
+      <View style={styles.productCard}>
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          source={require('../../assets/images/burger.jpg')}
+          style={styles.productImage}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
+        <Text style={styles.productName}>Chicken Burger</Text>
+        <Link href="/products" style={styles.linkButton}>
+          View Products
+        </Link>
+      </View>
+
+      <View style={styles.productCard}>
+        <Image
+          source={require('../../assets/images/burger.jpg')}
+          style={styles.productImage}
+        />
+        <Text style={styles.productName}>Vanilla Icecream</Text>
+        <Link href="/products" style={styles.linkButton}>
+          View Products
+        </Link>
+      </View>
+
+      <View style={styles.productCard}>
+        <Image
+          source={require('../../assets/images/burger.jpg')}
+          style={styles.productImage}
+        />
+        <Text style={styles.productName}>Crispy Fries</Text>
+        <Link href="/products" style={styles.linkButton}>
+          View Products
+        </Link>
+      </View>
+    </ScrollView>
+  ); 
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    paddingVertical: 20,
     alignItems: 'center',
-    gap: 8,
+    backgroundColor: '#fe7e01', 
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  productCard: {
+    backgroundColor: '#f8f8f8',
+    borderRadius: 12,
+    padding: 10,
+    marginBottom: 20,
+    alignItems: 'center',
+    width: '90%',
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+  },
+  productImage: {
+    width: 200,
+    height: 150,
+    resizeMode: 'cover',
+    borderRadius: 8,
+  },
+  productName: {
+    fontSize: 20,
+    fontWeight: '600',
+    marginTop: 10,
+  },
+  linkButton: {
+    marginTop: 8,
+    color: '#007bff',
+    fontWeight: 'bold',
   },
 });
