@@ -31,7 +31,7 @@ export default function WelcomeScreen({ navigation }) {
         </Text>
         <Text style={styles.subtitle}>
           Get your favourite meals delivered{'\n'}
-          quickly right to your doorstep
+          quickly right to your doorstep.
         </Text>
 
         <TouchableOpacity

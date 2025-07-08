@@ -7,7 +7,7 @@ const initialCart = [
   { id: 2, name: 'Vanilla Icecream', price: 3.49 },
   { id: 3, name: 'Crispy Fries', price: 2.99 },
 ];
-
+ 
 export default function CartPage() {
   const [cart, setCart] = useState(initialCart);
 
